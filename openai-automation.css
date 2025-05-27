@@ -1,0 +1,223 @@
+/* OpenAI Automation Plugin - Modern UI Styles */
+
+/* Main container styling */
+#openai_summary .inside {
+  padding: 12px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Summary content area */
+#summary-content {
+  background: #f9f9f9;
+  border-left: 4px solid #2271b1;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  min-height: 80px;
+  transition: all 0.3s ease;
+}
+
+#summary-content p {
+  margin: 0;
+  line-height: 1.6;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Empty state styling */
+#summary-content p:only-child:contains("No summary") {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Button styling */
+.summary-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.summary-actions button {
+  flex: 1;
+  padding: 8px 12px !important;
+  height: auto !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+  text-align: center;
+  font-weight: 500 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+#generate-summary {
+  background: #2271b1 !important;
+  border-color: #2271b1 !important;
+  color: white !important;
+}
+
+#generate-summary:hover {
+  background: #135e96 !important;
+  border-color: #135e96 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+#regenerate-summary {
+  background: #fff !important;
+  border-color: #2271b1 !important;
+  color: #2271b1 !important;
+}
+
+#regenerate-summary:hover {
+  background: #f0f5fa !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+.summary-actions button:active {
+  transform: translateY(1px) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.summary-actions button:disabled {
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+}
+
+/* Loading indicator */
+#summary-loading {
+  text-align: center;
+  color: #666;
+  font-size: 13px;
+  padding: 10px;
+  background: #f0f5fa;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+#summary-loading:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 2px solid #2271b1;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Notification system */
+.openai-notification {
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  animation: slideDown 0.3s ease forwards;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.openai-notification:before {
+  content: "";
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.openai-notification.success {
+  background-color: #edfaef;
+  color: #0a6b1d;
+  border-left: 4px solid #0a6b1d;
+}
+
+.openai-notification.success:before {
+  content: "✓";
+  color: #0a6b1d;
+  font-weight: bold;
+}
+
+.openai-notification.error {
+  background-color: #fbeaea;
+  color: #b32d2e;
+  border-left: 4px solid #b32d2e;
+}
+
+.openai-notification.error:before {
+  content: "!";
+  color: #b32d2e;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.openai-notification.fade-out {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 782px) {
+  .summary-actions {
+    flex-direction: column;
+  }
+
+  #summary-content {
+    min-height: 100px;
+  }
+}
