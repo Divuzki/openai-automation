@@ -250,7 +250,7 @@ Contributions are welcome! Please:
 
 ## 📄 License
 
-This plugin is released under the GPL v2 or later license.
+This plugin is released under the [GPL v2 or later license](LICENSE).
 
 ## 👨‍💻 Author
 
