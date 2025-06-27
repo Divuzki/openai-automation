@@ -85,16 +85,45 @@ A powerful WordPress plugin that integrates OpenAI's API to automatically genera
 - **Loading State**: Disabled buttons during processing
 - **Error Handling**: Clear error messages for troubleshooting
 
+## 📸 Screenshots
+
+Here are some screenshots illustrating the plugin's features and integration within WordPress:
+
+- **WordPress Plugins Page**: Shows the plugin listed on the WordPress plugins page, ready for activation or management.
+  ![WordPress Plugins Page](screenshots/wordpress-plugins-page.png)
+
+- **Plugin Settings**: Displays the dedicated settings page where users can configure their OpenAI API key.
+  ![Plugin Settings](screenshots/plugin-settings.png)
+
+- **Setting Dropdown with Plugin Settings Link Visible**: Highlights how to access the plugin settings directly from the Settings list dropdown.
+  ![Setting Dropdown with Plugin Settings Link Visible](screenshots/setting-dropdown-with-plugin-settings-link-visible.png)
+
+- **WordPress Posts Page**: A general view of the WordPress posts list, showing how the plugin integrates with the overall admin interface.
+  ![WordPress Posts Page](screenshots/wordpress-posts-page.png)
+
+- **WordPress Post Edit Page**: A view of the standard WordPress post edit screen.
+  ![WordPress Post Edit Page](screenshots/wordpress-post-edit-page.png)
+
+- **WordPress Post Edit Page with Plugin Visible**: Shows the OpenAI Summary meta box integrated into the post edit page sidebar.
+  ![WordPress Post Edit Page with Plugin Visible](screenshots/wordpress-post-edit-page-with-plugin-visible.png)
+
+- **WordPress Post Edit Page Plugin Summarizing**: Illustrates the plugin in action, with a loading indicator during the summary generation process.
+  ![WordPress Post Edit Page Plugin Summarizing](screenshots/wordpress-post-edit-page-plugin-summarizing.png)
+
+- **WordPress Post Edit Page Plugin Summarized Successful**: Displays a successfully generated summary within the meta box, along with a success notification.
+  ![WordPress Post Edit Page Plugin Summarized Successful](screenshots/wordpress-post-edit-page-plugin-summarized-sucessful.png)
+
 ## 🔧 Technical Details
 
 ### File Structure
 
-```
+```bash
 openai-automation/
-├── openai-automation.php    # Main plugin file
-├── openai-automation.js     # Frontend JavaScript
-├── openai-automation.css    # Styling
+├── openai-automation.php   # Main plugin file
+├── openai-automation.js    # Frontend JavaScript
+├── openai-automation.css   # Styling
 ├── blog-sample.md          # Sample content
+├── screenshots/            # Directory containing plugin screenshots
 └── README.md               # This file
 ```
 
