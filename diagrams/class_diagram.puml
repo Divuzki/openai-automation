@@ -1,0 +1,47 @@
+@startuml
+class OpenAI_Automation_Plugin {
+  - string $plugin_name
+  - string $version
+  - OpenAI_API_Client $openai_client
+  --
+  + __construct()
+  + run()
+  - define_admin_hooks()
+  - define_public_hooks()
+  - load_dependencies()
+  - set_locale()
+  - define_admin_hooks()
+  - define_public_hooks()
+  - get_plugin_name(): string
+  - get_version(): string
+}
+
+class OpenAI_Admin {
+  - OpenAI_Automation_Plugin $plugin
+  --
+  + __construct(plugin: OpenAI_Automation_Plugin)
+  + add_plugin_admin_menu()
+  + openai_options_page()
+  + register_settings()
+  + add_meta_box()
+  + render_meta_box(post: WP_Post)
+  + enqueue_styles()
+  + enqueue_scripts()
+  + generate_summary_ajax_handler()
+  - validate_api_key(input: string): string
+}
+
+class OpenAI_API_Client {
+  - string $api_key
+  - string $api_base_url
+  --
+  + __construct(api_key: string)
+  + generate_text(prompt: string, model: string, max_tokens: int): string
+  - make_request(endpoint: string, data: array): array
+}
+
+OpenAI_Automation_Plugin *-- OpenAI_Admin
+OpenAI_Automation_Plugin *-- OpenAI_API_Client
+OpenAI_Admin ..> OpenAI_API_Client : uses
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+
+actor "WordPress User" as user
+actor "OpenAI API" as openai
+
+rectangle "OpenAI Automation Plugin" {
+  usecase "Generate Summary" as generate_summary
+  usecase "Regenerate Summary" as regenerate_summary
+  usecase "Configure API Key" as configure_api_key
+  usecase "View Generated Summary" as view_summary
+}
+
+user --> generate_summary
+user --> regenerate_summary
+user --> configure_api_key
+user --> view_summary
+
+generate_summary .> openai : <<uses>>
+regenerate_summary .> openai : <<uses>>
+
+@enduml

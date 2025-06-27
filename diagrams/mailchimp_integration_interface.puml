@@ -1,0 +1,33 @@
+@startuml
+skinparam titleFontSize 20
+title Mailchimp Integration Interface
+
+actor "WordPress Admin" as Admin
+participant "WordPress Backend (Plugin Settings)" as WP_Backend
+participant "Mailchimp API Client (PHP)" as MC_API_Client
+participant "Mailchimp API" as Mailchimp
+
+Admin -> WP_Backend: Enters Mailchimp API Key & List ID
+WP_Backend -> WP_Backend: Validates Input
+WP_Backend -> MC_API_Client: Instantiates with API Key
+
+MC_API_Client -> Mailchimp: Verifies API Key (e.g., get lists)
+activate Mailchimp
+Mailchimp --> MC_API_Client: API Key Valid / Invalid
+deactivate Mailchimp
+
+MC_API_Client --> WP_Backend: Returns Validation Result
+WP_Backend -> WP_Backend: Saves Settings (if valid)
+WP_Backend --> Admin: Displays Success/Error Message
+
+Admin -> WP_Backend: Triggers Newsletter Send (e.g., on post publish)
+WP_Backend -> WP_Backend: Retrieves Post Content & Summary
+WP_Backend -> MC_API_Client: Creates Campaign/Sends Email
+MC_API_Client -> Mailchimp: API Call (create campaign, add content, send)
+activate Mailchimp
+Mailchimp --> MC_API_Client: Campaign Created/Sent Confirmation
+deactivate Mailchimp
+MC_API_Client --> WP_Backend: Returns Mailchimp Response
+WP_Backend --> Admin: Displays Newsletter Status
+
+@enduml

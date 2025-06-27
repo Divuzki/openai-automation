@@ -1,0 +1,61 @@
+@startuml
+start
+
+:User navigates to Post Edit Page;
+:Plugin Meta Box loads;
+
+if (Summary exists?) then (yes)
+  :Display existing summary;
+  :Show "Regenerate Summary" button;
+else (no)
+  :Display "No summary generated yet" message;
+  :Show "Generate Summary" button;
+endif
+
+:User clicks "Generate/Regenerate Summary" button;
+:AJAX request sent to WordPress backend;
+
+fork
+  :Display loading indicator;
+  :Disable buttons;
+fork again
+  :WordPress backend validates nonce and post ID;
+  :Retrieves post content;
+  if (Post content empty?) then (yes)
+    :Send error: "Post content is empty.";
+    stop
+  endif
+  if (API Key not set?) then (yes)
+    :Send error: "API key not set.";
+    stop
+  endif
+  :Truncate content if too long;
+  :Make request to OpenAI API;
+  if (OpenAI API error?) then (yes)
+    :Log error;
+    :Send error message to frontend;
+    stop
+  endif
+  :Receive response from OpenAI API;
+  if (Unexpected response?) then (yes)
+    :Log error;
+    :Send error message to frontend;
+    stop
+  endif
+  :Extract summary from response;
+  :Update post meta with new summary;
+  :Send success response with summary to frontend;
+end fork
+
+:Frontend receives response;
+if (Success?) then (yes)
+  :Update summary content in meta box;
+  :Display success notification;
+  :Enable buttons;
+else (no)
+  :Display error notification;
+  :Enable buttons;
+endif
+
+stop
+@enduml

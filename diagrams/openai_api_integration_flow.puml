@@ -1,0 +1,35 @@
+@startuml
+skinparam titleFontSize 20
+title OpenAI API Integration Flow
+
+participant "WordPress User" as User
+participant "WordPress Frontend (Meta Box)" as Frontend
+participant "WordPress Backend (AJAX Handler)" as Backend
+participant "OpenAI API Client (PHP)" as APIClient
+participant "OpenAI API" as OpenAI
+
+User -> Frontend: Clicks "Generate Summary"
+Frontend -> Backend: AJAX Request (wp_ajax_openai_generate_summary)
+
+activate Backend
+Backend -> Backend: Validate Nonce & Capabilities
+Backend -> Backend: Retrieve Post Content
+Backend -> Backend: Check for Empty Content
+Backend -> Backend: Check for API Key
+
+Backend -> APIClient: Instantiate with API Key
+activate APIClient
+APIClient -> OpenAI: HTTP POST Request (prompt, model, max_tokens)
+activate OpenAI
+OpenAI --> APIClient: HTTP Response (JSON with summary)
+deactivate OpenAI
+APIClient --> Backend: Return Generated Summary
+deactivate APIClient
+
+Backend -> Backend: Handle API Errors
+Backend -> Backend: Update Post Meta with Summary
+Backend --> Frontend: AJAX Response (success/error, summary)
+deactivate Backend
+
+Frontend -> User: Display Summary / Error Message
+@enduml

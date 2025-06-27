@@ -113,6 +113,48 @@ Here are some screenshots illustrating the plugin's features and integration wit
 - **WordPress Post Edit Page Plugin Summarized Successful**: Displays a successfully generated summary within the meta box, along with a success notification.
   ![WordPress Post Edit Page Plugin Summarized Successful](screenshots/wordpress-post-edit-page-plugin-summarized-sucessful.png)
 
+## 📊 Diagrams
+
+This project includes several diagrams generated using PlantUML to illustrate its architecture and functionality. The source `.puml` files are located in the <mcfolder name="diagrams/" path="/Users/mac/openai-automation/diagrams/"></mcfolder> directory.
+
+To render these diagrams into SVG images, you will need to have Java and PlantUML installed. You can download PlantUML from its <mcurl name="official website" url="http://plantuml.com/download"></mcurl>.
+
+Once PlantUML is installed, navigate to the <mcfolder name="diagrams/" path="/Users/mac/openai-automation/diagrams/"></mcfolder> directory in your terminal and run the following command for each `.puml` file:
+
+```bash
+java -jar /path/to/plantuml.jar <diagram_name>.puml
+```
+
+Replace `/path/to/plantuml.jar` with the actual path to your PlantUML JAR file and `<diagram_name>.puml` with the name of the diagram file (e.g., `use_case_diagram.puml`). This will generate an SVG file (e.g., `use_case_diagram.svg`) in the same directory.
+
+*   **Use Case Diagram**
+    ![Use Case Diagram](diagrams/use_case_diagram.svg)
+
+*   **Activity Diagram**
+    ![Activity Diagram](diagrams/activity_diagram.svg)
+
+*   **Sequence Diagram**
+    ![Sequence Diagram](diagrams/sequence_diagram.svg)
+
+*   **Class Diagram**
+    ![Class Diagram](diagrams/class_diagram.svg)
+
+*   **Analytics Data Flow Diagram**
+    ![Analytics Data Flow Diagram](diagrams/analytics_data_flow_diagram.svg)
+
+*   **OpenAI API Integration Flow**
+    ![OpenAI API Integration Flow](diagrams/openai_api_integration_flow.svg)
+
+*   **Social Media Distribution Workflow**
+    ![Social Media Distribution Workflow](diagrams/social_media_distribution_workflow.svg)
+
+*   **Mailchimp Integration Interface**
+    ![Mailchimp Integration Interface](diagrams/mailchimp_integration_interface.svg)
+
+*   **ACDS System Architecture**
+    ![ACDS System Architecture](diagrams/acds_system_architecture.svg)
+
+
 ## 🔧 Technical Details
 
 ### File Structure

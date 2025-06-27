@@ -1,0 +1,31 @@
+@startuml
+actor User
+participant "Browser (WordPress Admin)" as Browser
+participant "WordPress Backend (PHP)" as WP
+participant "OpenAI API" as OpenAI
+
+User -> Browser: Edits a post
+Browser -> WP: Loads Post Edit Page (GET request)
+WP -> Browser: Renders Post Edit Page with Plugin Meta Box
+
+User -> Browser: Clicks "Generate Summary" button
+activate Browser
+Browser -> WP: AJAX Request (wp_ajax_openai_generate_summary)
+activate WP
+
+WP -> WP: Validates nonce and capabilities
+WP -> WP: Retrieves post content
+WP -> OpenAI: API Call (text-davinci-003, content)
+activate OpenAI
+OpenAI --> WP: API Response (generated summary)
+deactivate OpenAI
+
+WP -> WP: Updates post meta with summary
+WP --> Browser: AJAX Response (success, summary)
+deactivate WP
+
+Browser -> Browser: Updates Meta Box with new summary
+Browser -> User: Displays summary and success message
+deactivate Browser
+
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+skinparam titleFontSize 20
+title ACDS System Architecture
+
+rectangle "User Interface Layer" {
+  [Web Browser]
+  [Mobile App]
+}
+
+rectangle "Application Layer" {
+  [WordPress Frontend]
+  [WordPress Backend]
+  [OpenAI Automation Plugin]
+}
+
+rectangle "Data Layer" {
+  [WordPress Database]
+  [OpenAI API]
+  [External Analytics Service]
+  [Social Media Platforms]
+  [Mailchimp API]
+}
+
+"Web Browser" -- "WordPress Frontend"
+"Mobile App" -- "WordPress Frontend"
+
+"WordPress Frontend" -- "WordPress Backend" : AJAX/HTTP
+"WordPress Backend" -- "OpenAI Automation Plugin" : Hooks/Functions
+
+"OpenAI Automation Plugin" -- "WordPress Database" : Read/Write Post Meta
+"OpenAI Automation Plugin" -- "OpenAI API" : API Calls
+
+"WordPress Frontend" -- "External Analytics Service" : Data Collection
+
+"WordPress Backend" -- "Social Media Platforms" : (via SMM Tool)
+"WordPress Backend" -- "Mailchimp API" : (via Integration)
+
+@enduml

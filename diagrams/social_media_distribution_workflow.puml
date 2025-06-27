@@ -1,0 +1,22 @@
+@startuml
+skinparam titleFontSize 20
+title Social Media Distribution Workflow
+
+actor "Content Creator" as Creator
+participant "WordPress Editor" as WP_Editor
+participant "OpenAI Automation Plugin" as Plugin
+participant "WordPress Database" as DB
+participant "Social Media Management Tool" as SMM_Tool
+participant "Social Media Platforms" as Social_Media
+
+Creator -> WP_Editor: Writes/Edits Post Content
+Creator -> Plugin: Generates Summary (using plugin)
+Plugin -> DB: Saves Summary to Post Meta
+DB --> Plugin: Summary Saved
+Plugin --> WP_Editor: Displays Summary
+
+Creator -> SMM_Tool: Publishes Post (with summary)
+SMM_Tool -> Social_Media: Distributes Content
+Social_Media --> SMM_Tool: Confirmation/Analytics
+
+@enduml

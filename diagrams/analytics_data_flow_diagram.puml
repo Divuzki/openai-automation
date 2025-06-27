@@ -1,0 +1,27 @@
+@startuml
+skinparam titleFontSize 20
+title Analytics Data Flow Diagram
+
+actor "WordPress User" as User
+participant "WordPress Frontend" as Frontend
+participant "WordPress Backend" as Backend
+participant "OpenAI Automation Plugin" as Plugin
+participant "OpenAI API" as OpenAI
+participant "WordPress Database" as DB
+participant "Analytics Service (e.g., Google Analytics)" as Analytics
+
+User -> Frontend: Views/Interacts with Post
+Frontend -> Plugin: Triggers summary generation (AJAX)
+Plugin -> Backend: Sends request for summary
+Backend -> Plugin: Processes request
+Plugin -> OpenAI: Sends content for summarization
+OpenAI --> Plugin: Returns generated summary
+Plugin -> DB: Stores summary as post meta
+DB --> Plugin: Confirmation
+Plugin --> Backend: Sends summary to frontend
+Backend --> Frontend: Displays summary
+
+Frontend -> Analytics: Sends page view/event data
+Analytics -> Analytics: Processes and stores data
+
+@enduml
